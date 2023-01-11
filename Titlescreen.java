@@ -17,7 +17,7 @@ public class Titlescreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        Label label = new Label("Guess the number!", 50);
+        Label label = new Label("Flappy Bird", 50);
         addObject(label, 300, 100);
     }
 }
