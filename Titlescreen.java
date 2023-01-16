@@ -17,7 +17,19 @@ public class Titlescreen extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
-        Label label = new Label("Flappy Bird", 50);
-        addObject(label, 300, 100);
+        //Make a label to hold the title for the game
+        Label Title = new Label("Rock, Paper, Scissors", 50);
+        addObject(Title, 300, 100);
+        prepare();
+    }
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Banner banner = new Banner();
+        addObject(banner,276,191);
+        banner.setLocation(26,213);
     }
 }
