@@ -23,13 +23,30 @@ public class Titlescreen extends World
         prepare();
     }
     /**
+     * Tracks whenever a key is pressed to do the appropriate action
+     */
+    public void act() {
+        if(Greenfoot.isKeyDown("space")) {
+            MyWorld gameWorld = new MyWorld();
+            Greenfoot.setWorld(gameWorld);
+        }
+        if(Greenfoot.isKeyDown("h")) {
+            Help helpMenu = new Help();
+            Greenfoot.setWorld(helpMenu);
+        }
+    }
+    
+    /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
         Banner banner = new Banner();
-        addObject(banner,276,191);
-        banner.setLocation(26,213);
+        addObject(banner,280,250);
+        Label label = new Label("Press <h> for help", 30);
+        addObject(label,125,200);
+        Label label2 = new Label("Press <space> to play", 30);
+        addObject(label2,465,200);
     }
 }
