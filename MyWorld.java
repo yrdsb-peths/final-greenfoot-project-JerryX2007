@@ -10,6 +10,11 @@ public class MyWorld extends World
 {
     public Random random = new Random();
     public boolean win = false;
+    Label gameWinLabel = new Label("Game Win", 100);;
+    Rock rock = new Rock();
+    Paper paper = new Paper();
+    Scissors scissors = new Scissors();
+    int compChoice = 3;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -18,35 +23,20 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        Rock rock = new Rock();
-        Paper paper = new Paper();
-        Scissors scissors = new Scissors();
+
         addObject(rock, 50, 300);
         addObject(paper, 300, 300);
         addObject(scissors, 450, 300);
+        
+        
         // Gets the users choice
         int userInp = 1;
-        if(Greenfoot.mouseClicked(rock)){
-            userInp = 1;
-        }
-        else if (Greenfoot.mouseClicked(paper)) {
-            userInp = 2;
-        }
-        else if (Greenfoot.mouseClicked(scissors)){
-            userInp = 3;
-        }
+        
         int comInp = computer();
-        winner(userInp, comInp);
-        if(getWinStatus()) {
-            Label gameWinLabel = new Label("Game Win", 100);
-            addObject(gameWinLabel, 300, 300);
-        }
-        else {
-            Label gameOverLabel = new Label("Game Over", 100);
-            addObject(gameOverLabel, 300, 300);
-        }
-        Label playAgain = new Label("Play Again?", 50);
-        addObject(playAgain, 300, 500);
+        
+        
+        //Label playAgain = new Label("Play Again?", 50);
+        //addObject(playAgain, 300, 500);
     }
     /**
      * Getter for win variable
@@ -64,6 +54,7 @@ public class MyWorld extends World
      * Determines the winner
      */
     private void winner(int userInp, int comInp) {
+        
         if(userInp==1&&comInp==2) {
             win = false;
         }
@@ -76,5 +67,27 @@ public class MyWorld extends World
         else {
             win = true;
         }
+        if(getWinStatus()) {
+            addObject(gameWinLabel, 300, 300);
+        } else {
+            gameWinLabel.setValue("Lose");
+            addObject(gameWinLabel, 300, 300);
+        }
+    }
+    
+    
+    
+    public void act(){
+        if(Greenfoot.mouseClicked(rock)){
+            winner(1, compChoice);
+        }
+        else if (Greenfoot.mouseClicked(paper)) {
+            winner(2, compChoice);
+        }
+        else if (Greenfoot.mouseClicked(scissors)){
+            winner(3, compChoice);
+        }
+        
+        
     }
 }
