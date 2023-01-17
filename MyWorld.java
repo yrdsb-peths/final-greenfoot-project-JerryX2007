@@ -18,31 +18,41 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-        int userInp = user();
+        Rock rock = new Rock();
+        Paper paper = new Paper();
+        Scissors scissors = new Scissors();
+        addObject(rock, 50, 300);
+        addObject(paper, 300, 300);
+        addObject(scissors, 450, 300);
+        // Gets the users choice
+        int userInp = 1;
+        if(Greenfoot.mouseClicked(rock)){
+            userInp = 1;
+        }
+        else if (Greenfoot.mouseClicked(paper)) {
+            userInp = 2;
+        }
+        else if (Greenfoot.mouseClicked(scissors)){
+            userInp = 3;
+        }
         int comInp = computer();
         winner(userInp, comInp);
-        GameOver gameOver = new GameOver();
-        Greenfoot.setWorld(gameOver);
+        if(getWinStatus()) {
+            Label gameWinLabel = new Label("Game Win", 100);
+            addObject(gameWinLabel, 300, 300);
+        }
+        else {
+            Label gameOverLabel = new Label("Game Over", 100);
+            addObject(gameOverLabel, 300, 300);
+        }
+        Label playAgain = new Label("Play Again?", 50);
+        addObject(playAgain, 300, 500);
     }
     /**
      * Getter for win variable
      */
     public boolean getWinStatus() {
         return win;
-    }
-    /**
-     * Gets the users decision
-     */
-    private int user() {
-        if(Greenfoot.isKeyDown("1")) {
-            return 1;
-        }
-        else if(Greenfoot.isKeyDown("2")) {
-            return 2;
-        }
-        else {
-            return 3;
-        }
     }
     /**
      * Generates the computer's decision
