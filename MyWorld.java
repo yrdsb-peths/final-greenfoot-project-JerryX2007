@@ -8,9 +8,12 @@ import java.util.Random;
  */
 public class MyWorld extends World
 {
+    GreenfootSound winSound = new GreenfootSound("Win.mp3");
+    GreenfootSound loseSound = new GreenfootSound("Lose.mp3");
+    GreenfootSound tieSound = new GreenfootSound("Tie.mp3");
     public Random random = new Random();
     public int win;
-    Label gameWinLabel = new Label("Game Win", 100);;
+    Label gameWinLabel = new Label("Game Win", 45);
     Rock rock = new Rock();
     Paper paper = new Paper();
     Scissors scissors = new Scissors();
@@ -24,7 +27,7 @@ public class MyWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
 
-        addObject(rock, 50, 300);
+        addObject(rock, 150, 300);
         addObject(paper, 300, 300);
         addObject(scissors, 450, 300);
         //Label playAgain = new Label("Play Again?", 50);
@@ -40,6 +43,10 @@ public class MyWorld extends World
      * Determines the winner
      */
     private void result(int userInp, int comInp) {
+        String out = "";
+        if(comInp==1) out = "Rock";
+        else if(comInp==2) out = "Paper";
+        else if(comInp==3) out = "Scissors";
         if(userInp==comInp) {
             win = -1;
         }
@@ -56,16 +63,19 @@ public class MyWorld extends World
             win = 1;
         }
         if(getWinStatus()==-1) {
-            gameWinLabel.setValue("Tie");
-            addObject(gameWinLabel, 300, 300);
+            gameWinLabel.setValue("Tie, computer picked " + out);
+            addObject(gameWinLabel, 300, 100);
+            tieSound.play();
         }
         else if (getWinStatus()==0) {
-            gameWinLabel.setValue("Win");
-            addObject(gameWinLabel, 300, 300);
+            gameWinLabel.setValue("You Win, computer picked " + out);
+            addObject(gameWinLabel, 300, 100);
+            winSound.play();
         }
         else {
-            gameWinLabel.setValue("Lose");
-            addObject(gameWinLabel, 300, 300);
+            gameWinLabel.setValue("You Lose, computer picked " + out);
+            addObject(gameWinLabel, 300, 100);
+            loseSound.play();
         }
     }
     
