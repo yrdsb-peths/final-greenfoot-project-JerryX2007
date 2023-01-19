@@ -18,6 +18,8 @@ public class MyWorld extends World
     Paper paper = new Paper();
     Scissors scissors = new Scissors();
     int compChoice = random.nextInt(3)+1;
+    SimpleTimer timer = new SimpleTimer();
+    boolean clicked = false;
     /**
      * Constructor for objects of class MyWorld.
      * 
@@ -26,12 +28,8 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
-
-        addObject(rock, 150, 300);
-        addObject(paper, 300, 300);
-        addObject(scissors, 450, 300);
-        //Label playAgain = new Label("Play Again?", 50);
-        //addObject(playAgain, 300, 500);
+        prepare();
+        timer.mark();
     }
     /**
      * Getter for win variable
@@ -50,7 +48,7 @@ public class MyWorld extends World
         if(userInp==comInp) {
             win = -1;
         }
-        if(userInp==1&&comInp==2) {
+        else if(userInp==1&&comInp==2) {
             win = 0;
         }
         else if (userInp==2&&comInp==3) {
@@ -67,7 +65,7 @@ public class MyWorld extends World
             addObject(gameWinLabel, 300, 100);
             tieSound.play();
         }
-        else if (getWinStatus()==0) {
+        else if (getWinStatus()==1) {
             gameWinLabel.setValue("You Win, computer picked " + out);
             addObject(gameWinLabel, 300, 100);
             winSound.play();
@@ -78,20 +76,47 @@ public class MyWorld extends World
             loseSound.play();
         }
     }
-    
-    
-    
+    /**
+     * Input reading
+     */
     public void act(){
         if(Greenfoot.mouseClicked(rock)){
             result(1, compChoice);
+            clicked=true;
         }
         else if (Greenfoot.mouseClicked(paper)) {
             result(2, compChoice);
+            clicked=true;
         }
         else if (Greenfoot.mouseClicked(scissors)){
             result(3, compChoice);
+            clicked=true;
         }
+        goToPlayAgain(clicked);
         
-        
+    }
+    /**
+     * A function to go to play again screen when game finished
+     */
+    public void goToPlayAgain(boolean clicked) {
+        if(timer.millisElapsed()>5000&&clicked) {
+            timer.mark();
+            PlayAgain playAgain = new PlayAgain();
+            Greenfoot.setWorld(playAgain);
+        }
+    }
+    /**
+     * Prepares the world
+     */
+    public void prepare() {
+        Label r = new Label("Rock", 40);
+        Label p = new Label("Paper", 40);
+        Label s = new Label("Scissors", 40);
+        addObject(r, 150, 200);
+        addObject(p, 300, 200);
+        addObject(s, 450, 200);
+        addObject(rock, 150, 300);
+        addObject(paper, 300, 300);
+        addObject(scissors, 450, 300);
     }
 }

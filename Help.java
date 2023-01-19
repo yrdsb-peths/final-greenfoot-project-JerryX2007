@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Help here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerry Xing 
+ * @version 1
  */
 public class Help extends World
 {
@@ -19,7 +19,7 @@ public class Help extends World
         super(600, 400, 1);
         // Create Labels for the help menu
         Label helper = new Label("When given the prompt,", 50);
-        Label helper1 = new Label("please select a number from 1-3", 45);
+        Label helper1 = new Label("please click on your choice", 45);
         Label returnToTitle = new Label("Press b to return to titlescreen", 45);
         addObject(helper, 300, 100);
         addObject(helper1, 300, 150);

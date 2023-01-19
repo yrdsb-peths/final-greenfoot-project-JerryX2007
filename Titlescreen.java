@@ -42,8 +42,6 @@ public class Titlescreen extends World
      */
     private void prepare()
     {
-        Banner banner = new Banner();
-        addObject(banner,280,250);
         Label label = new Label("Press <h> for help", 30);
         addObject(label,125,200);
         Label label2 = new Label("Press <space> to play", 30);
