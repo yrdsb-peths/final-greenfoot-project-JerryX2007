@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Help here.
+ * Class Help is where the user is given the "help" they need regarding controls and the game
  * 
  * @author Jerry Xing 
  * @version 1

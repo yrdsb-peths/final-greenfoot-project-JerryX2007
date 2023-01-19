@@ -1,10 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 /**
- * Write a description of class MyWorld here.
+ * Class MyWorld is the world that contains the main game. The game is Rock, Paper, Scissors.
+ * First, you create 3 labels and objects that are the rock, paper, and scissors.
+ * Next, you wait for the user to click on one of the objects, then tell them if they lose
+ * Or win. After doing so, you set a stopwatch and after it reaches 500 milliseconds
+ * It takes them to the play again screen.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerry Xing
+ * @version 1
  */
 public class MyWorld extends World
 {

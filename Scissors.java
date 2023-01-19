@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Scissors here.
+ * Class Scissors holds the image for paper and is used for detecting when the user clicks
+ * Their option.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerry Xing 
+ * @version 1
  */
 public class Scissors extends Actor
 {

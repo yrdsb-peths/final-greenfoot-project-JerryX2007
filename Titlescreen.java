@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Titlescreen here.
+ * Class Titlescreen is the interface the the user first view
+ * It contains the options to go to the help menu by pressing <h>
+ * As well as going to play the game by pressing <space>
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerry Xing
+ * @version 1
  */
 public class Titlescreen extends World
 {

@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Rock here.
+ * Class Rock holds the image for paper and is used for detecting when the user clicks
+ * Their option.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jerry Xing 
+ * @version 1
  */
 public class Rock extends Actor
 {
